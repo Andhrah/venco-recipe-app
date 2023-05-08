@@ -27,7 +27,7 @@ const Card = (): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 2,
+    elevation: 0.1,
     backgroundColor: '#FFFFFF',
     height: hp('30%'),
     width: wp('42%'),
