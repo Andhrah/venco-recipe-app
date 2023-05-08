@@ -28,7 +28,7 @@ type TabIconProps = {
 /**
  * Component for rendering the tab screens.
  */
-const TabScreens = () => {
+const TabScreens = ():JSX.Element => {
   /**
    * Renders the icon for the tab bar.
    * @param {TabIconProps} props - The props for the component.

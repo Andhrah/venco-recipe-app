@@ -1,23 +1,34 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, SafeAreaView, Image, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Icon from 'react-native-remix-icon';
+
 import { Button, Card, CategoryBtn } from '../shared';
 
-
 const Home = (): JSX.Element => {
-  const { container, profileStyle, generalTextStyle, homeCard, titleText, displayImg, watchBtn, watchText, scrollViewStyle, cardContainer, focusedBtn } = styles;
+  const { container, profileStyle, generalTextStyle, homeCard, titleText, displayImg, watchBtn, watchText, scrollViewStyle, cardContainer, focusedBtn, avatarContainer, avatarText, viewContainer, mapContainer } = styles;
   return (
-    <View style={container}>
+    <SafeAreaView style={container}>
       <StatusBar
         backgroundColor="#FB9400"
         hidden={false} translucent={false}
         barStyle="light-content"
       />
-      <SafeAreaView>
+
+      <View style={viewContainer}>
         <View style={profileStyle}>
-          <View/>
-          <Text style={generalTextStyle}>1b Birrel, yaba</Text>
-          <View/>
+          <View style={avatarContainer}>
+            <Text style={avatarText}>👩🏽‍🦱</Text>
+          </View>
+
+          <View style={mapContainer}>
+            <Icon name="map-pin-2-fill" color="#373C5B" />
+            <Text style={generalTextStyle}> 1b Birrel, yaba</Text>
+          </View>
+
+          <View style={avatarContainer}>
+            <Icon name="notification-2-fill" color="#373C5B" />
+          </View>
         </View>
 
         <View style={homeCard}>
@@ -26,8 +37,8 @@ const Home = (): JSX.Element => {
               Find your food {'\n'}recipe easily
             </Text>
 
-            <Button style={watchBtn}>
-              <Text style={watchText}>watch</Text>
+            <Button style={watchBtn} btnTextStyle={watchText} color="#FB9400">
+              watch
             </Button>
           </View>
 
@@ -40,20 +51,21 @@ const Home = (): JSX.Element => {
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          style={scrollViewStyle}>
-            <CategoryBtn style={focusedBtn}>
-              🍽 Popular
-            </CategoryBtn>
-            <CategoryBtn>
-              🍜 Ramen
-            </CategoryBtn>
-            <CategoryBtn>
-              🍦 Ice cream
-            </CategoryBtn>
-            <CategoryBtn>
-              🥗 Soup
-            </CategoryBtn>
-          </ScrollView>
+          style={scrollViewStyle}
+        >
+          <CategoryBtn style={focusedBtn}>
+            🍽 Popular
+          </CategoryBtn>
+          <CategoryBtn>
+            🍜 Ramen
+          </CategoryBtn>
+          <CategoryBtn>
+            🍦 Ice cream
+          </CategoryBtn>
+          <CategoryBtn>
+            🥗 Soup
+          </CategoryBtn>
+        </ScrollView>
 
         <View>
           <Text style={generalTextStyle}>Based on the type of food you like</Text>
@@ -66,20 +78,22 @@ const Home = (): JSX.Element => {
               <Card />
             </View>
           </ScrollView>
-
         </View>
-      </SafeAreaView>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
+    height: hp('100%'),
     backgroundColor: '#F9F9FB',
-    paddingHorizontal: 25,
+  },
+  viewContainer: {
+    paddingHorizontal: 15,
     paddingTop: 20,
+    paddingBottom: 100,
   },
   generalTextStyle: {
     color: '#373C5B',
@@ -88,6 +102,7 @@ const styles = StyleSheet.create({
   profileStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   homeCard: {
     backgroundColor: '#FB9400',
@@ -103,7 +118,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: '#FFFDE1',
     fontSize: hp('3.3%'),
-    marginBottom: 20,
+    marginBottom: 30,
   },
   displayImg: {
     height: hp('20%'),
@@ -128,6 +143,20 @@ const styles = StyleSheet.create({
   focusedBtn: {
     backgroundColor: '#FB9400',
     color: '#FEF0DC',
+  },
+  avatarContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
+    backgroundColor: '#FFFFFF',
+    height: hp('6%'),
+    width: wp('12%'),
+  },
+  avatarText: {
+    fontSize: hp(4.0),
+  },
+  mapContainer: {
+    flexDirection: 'row',
   },
 });
 

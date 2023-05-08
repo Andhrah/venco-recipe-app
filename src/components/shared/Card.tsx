@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Platform } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Icon from 'react-native-remix-icon';
+
 import { Button } from './Button';
 
 const Card = (): JSX.Element => {
-  const { container, img, textStyle, btn, btnContainer, timeText } = styles;
+  const { container, img, textStyle, btn, btnContainer, timeText, timeContainer } = styles;
 
   return (
     <View style={container}>
@@ -15,11 +17,14 @@ const Card = (): JSX.Element => {
       <Text style={textStyle}>Spicy Ramen Noodle</Text>
 
       <View style={btnContainer}>
-        <Button style={btn}>
-          <Text>Watch</Text>
+        <Button style={btn} color="#FFFFFF">
+          Watch
         </Button>
 
-      <Text style={timeText}>15 minute</Text>
+        <View style={timeContainer}>
+          <Icon name="time-line" size={20} color="#D0CAE0" />
+          <Text style={timeText}>15 mins</Text>
+        </View>
       </View>
     </View>
   );
@@ -29,12 +34,12 @@ const styles = StyleSheet.create({
   container: {
     elevation: 0.1,
     backgroundColor: '#FFFFFF',
-    height: hp('30%'),
-    width: wp('42%'),
+    height: Platform.OS === 'ios' ? hp('26%') : hp('27%'),
+    width: wp('44%'),
     borderRadius: 20,
     paddingVertical: 20,
     marginBottom: 20,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
   },
   img: {
     height: hp('15%'),
@@ -44,16 +49,18 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: hp('1.7'),
     color: '#373C5B',
+    marginBottom: 15,
   },
   btn: {
     backgroundColor: '#FB9400',
-    borderRadius: 20,
-    paddingHorizontal: 5,
-    paddingVertical: 3,
   },
   btnContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  timeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   timeText: {
     color: '#D0CAE0',
