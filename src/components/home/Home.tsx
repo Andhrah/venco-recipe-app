@@ -5,7 +5,7 @@ import { Button, Card, CategoryBtn } from '../shared';
 
 
 const Home = (): JSX.Element => {
-  const { container, profileStyle, generalTextStyle, homeCard, titleText, displayImg, watchBtn, watchText, scrollViewStyle, cardContainer } = styles;
+  const { container, profileStyle, generalTextStyle, homeCard, titleText, displayImg, watchBtn, watchText, scrollViewStyle, cardContainer, focusedBtn } = styles;
   return (
     <View style={container}>
       <StatusBar
@@ -41,19 +41,19 @@ const Home = (): JSX.Element => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={scrollViewStyle}>
-            <CategoryBtn>
-              Popular
+            <CategoryBtn style={focusedBtn}>
+              🍽 Popular
             </CategoryBtn>
             <CategoryBtn>
-              Ramen
+              🍜 Ramen
             </CategoryBtn>
             <CategoryBtn>
-              Ice cream
+              🍦 Ice cream
             </CategoryBtn>
             <CategoryBtn>
-              Soup
+              🥗 Soup
             </CategoryBtn>
-        </ScrollView>
+          </ScrollView>
 
         <View>
           <Text style={generalTextStyle}>Based on the type of food you like</Text>
@@ -124,6 +124,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     marginTop: 20,
+  },
+  focusedBtn: {
+    backgroundColor: '#FB9400',
+    color: '#FEF0DC',
   },
 });
 
