@@ -15,6 +15,9 @@ import Recipes from '../components/favourites/Favourites';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+/**
+ * Props for TabBarIcon component.
+ */
 type TabIconProps = {
   focused: boolean;
   color: string;
@@ -22,8 +25,16 @@ type TabIconProps = {
   route: any;
 }
 
+/**
+ * Component for rendering the tab screens.
+ */
 const TabScreens = () => {
-  const renderTabBarIcon = ({ focused, color, size, route }:TabIconProps) => {
+  /**
+   * Renders the icon for the tab bar.
+   * @param {TabIconProps} props - The props for the component.
+   * @returns {JSX.Element} The rendered icon component.
+   */
+  const renderTabBarIcon = ({ focused, color, size, route }: TabIconProps): JSX.Element => {
     let iconName = '';
     if (route.name === 'Home') {
       iconName = 'home-5-fill';
@@ -58,7 +69,11 @@ const TabScreens = () => {
   );
 };
 
-const App = () => {
+/**
+ * The main app component.
+ * @returns {JSX.Element} The rendered app component.
+ */
+const App = (): JSX.Element => {
   return (
     <NavigationContainer>
       <Stack.Navigator
